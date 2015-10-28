@@ -43,14 +43,16 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws IOException {
-		if (args.length < 4) {
+		if (args.length < 3) {
 			ErrorMessage();
 		}
 
 		final int simulatorType = Integer.parseInt(args[0]);
 		final String outFileName = args[1];
 		final int numServers = Integer.parseInt(args[2]);
-		int numReplicas = Integer.parseInt(args[3]);
+		int numReplicas = 0;
+		if(simulatorType == 2)
+			numReplicas = Integer.parseInt(args[3]);
 		long initialTime = System.currentTimeMillis()/1000;
 
 		// initialize numServers Servers per TimeGranularity
