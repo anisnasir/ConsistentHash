@@ -1,0 +1,13 @@
+Please follow mentioned steps to execute the simulator
+1. Pre-processing
+	- make sure that you have added required maven dependencies
+	- Twitter data has some tweets with null text. Simulator does not accepts tweets with null text. use
+		cat twitter|grep -P '^[0-9]*\t[a-z].*'>twitter
+	- Wiki data has issue with ordering of timestamps, i.e., some keys are out of order
+		make sure that you catch the exceptions in the Server.java in updateStats and addTranscation method
+	- Wiki data has multiple spaces between timestamp and url. Remember to replace multiple spaces with tabs
+
+2. Execution
+	- Use the run_simulation.sh script to run the simulator
+3. Post processing
+	- use the matlab script inside src/main/matlab to generate the graphs 
