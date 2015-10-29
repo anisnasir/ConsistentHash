@@ -31,7 +31,7 @@ public class ZipfGenerator {
 		if(messageCount < numMessages ) {
 			List<String> list = new ArrayList<String>();
 			list.add(String.valueOf(zipf.sample()));
-			temp = new StreamItem(System.currentTimeMillis(),list);
+			temp = new StreamItem((System.currentTimeMillis()/1000),list);
 			messageCount++;	
 			return temp;
 		}

@@ -1,22 +1,16 @@
 package slb;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.zip.GZIPInputStream;
 
 public class Main {
-	private static final double PRINT_INTERVAL = 1e6;
+	private static final double PRINT_INTERVAL = 1e5;
 
 	private static void ErrorMessage() {
 		System.err.println("Choose the type of simulator using:");
@@ -86,18 +80,6 @@ public class Main {
 
 		// read items and route them to the correct server
 		System.out.println("Starting to read the item stream");
-		/*BufferedReader in = null;
-		try {
-			InputStream rawin = new FileInputStream(inFileName);
-			if (inFileName.endsWith(".gz"))
-				rawin = new GZIPInputStream(rawin);
-			in = new BufferedReader(new InputStreamReader(rawin));
-		} catch (FileNotFoundException e) {
-			System.err.println("File not found");
-			e.printStackTrace();
-			System.exit(1);
-		}
-*/
 		// core loop
 		long simulationStartTime = System.currentTimeMillis();
 		//StreamItemReader reader = new StreamItemReader(in);
@@ -110,6 +92,7 @@ public class Main {
 		int itemCount = 0;
 
 		while (item != null) {
+			//System.out.println(item.getTimestamp()+"\t"+item.getWord(0));
 			if (++itemCount % PRINT_INTERVAL == 0) {
 				System.out.println("Read " + itemCount / 1000000
 						+ "M tweets.\tSimulation time: "
